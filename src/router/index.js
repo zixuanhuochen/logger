@@ -69,13 +69,14 @@ router.beforeEach((to, from, next ) => {
   if(from.path == '/lock' && localStorage.getItem('lock') == 'true'){
     next(false)
   }
-  else{
-    if(to.path != '/login' && localStorage.getItem('lock' == 'true')){
+  else if(to.path != '/login' && localStorage.getItem('lock' == 'true')){
       next('/lock')
-    }else {
+    }else if(to.path == '/login' && localStorage.getItem('token')){
+      next('/home')
+    }else{
       next()
     }
-  }
+  
  
 })
 

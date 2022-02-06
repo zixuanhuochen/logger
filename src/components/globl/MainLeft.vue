@@ -1,8 +1,16 @@
 <!--  -->
 <template>
   <div class="left">
-    左侧组件
+    <div class="bgcmain">
+      <h2 @click="changeShow">更换主题</h2>
+    </div>
+    <ul v-show="isShow" @click="changeBgc($event)">
+      <li v-for="(item,index) in bgcData " :key="index">
+        <img :src="item" :alt="index">
+      </li>
+    </ul>
   </div>
+  
 </template>
 
 <script>
@@ -19,14 +27,27 @@ export default {
   name: "MainLeft",
   data() {
     return {
-      
+      bgcData: {
+        bg0,bg1,bg2,bg3,bg4,bg5,bg6,bg7
+      },
+      isShow: false,
     };
   },
   //生命周期 - 创建完成（访问当前this实例）
   created() {},
   //生命周期 - 挂载完成（访问DOM元素）
   mounted() {},
-  methods: {},
+  methods: {
+    changeShow(){
+      this.isShow = !this.isShow
+    },
+    changeBgc(e){
+     let indexId = e.target.alt
+     indexId = indexId.split('g')[1]
+     this.$emit('changeBG',indexId)
+     localStorage.setItem('bgimg',indexId)
+    }
+  },
 };
 </script>
 <style scoped lang='less'>
@@ -36,8 +57,18 @@ export default {
   top: 175px;
   left: 20px;
   width: 200px;
-  height: 800px;
-  background: turquoise;
-  
+  // background: turquoise;
+  h2{
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+  }
+  img{
+    width: 100%;
+    border: 1px solid turquoise;
+  }
+  .bgcmain{
+    margin: 10px;
+  }
 }
 </style>

@@ -20,8 +20,8 @@ export default {
   data() {
     return {
       userInfo: {
-        username: '',
-        password: ''
+        username: 'admin1',
+        password: '000000'
       },
     };
   },
