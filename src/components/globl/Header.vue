@@ -9,7 +9,7 @@
     </ul>
     <ul class="right">
       <!-- <router-link to="/lock" tag="li" @click="lockScreen">锁屏</router-link> -->
-      <li @click="lockScreen">锁屏</li>
+      <li @click="lockScreen" v-if="isLogin">锁屏</li>
       <router-link to="/login" tag="li" v-if="!isLogin">Login</router-link>
       <li @click="singOut" v-else>退出登录</li>
     </ul>
@@ -22,10 +22,11 @@ export default {
   props:['isLogin'],
   data(){
     return {
+      id:''
     }
   },
   mounted(){
-    
+  
   },
   methods:{
     lockScreen(){

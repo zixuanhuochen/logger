@@ -1,5 +1,5 @@
 <template>
-  <div class="home" :class="'bg-' + bg">
+  <div class="home" :class="'bg-' + bg" >
     <Header :isLogin="isLogin" @singOut="singOut"></Header>
     <MainLeft class="left" @changeBG="changeBG"></MainLeft>
     <router-view class="mid"></router-view>
@@ -75,13 +75,15 @@ export default {
   width: 1920px;
   background-size: 100%;
   background-attachment: fixed;
+ 
   overflow: hidden;
+  
   .mid {
     width: 1080px;
-    height: 3000px;
+    min-height: 930px;
     margin-left: 350px;
     margin-top: 48px;
-    background: rgb(224, 86, 5);
   }
 }
+
 </style>

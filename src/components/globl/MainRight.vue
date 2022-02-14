@@ -29,7 +29,6 @@ export default {
   right: 20px;
   width: 300px;
   height: 800px;
-  background:yellow;
   
 }
 </style>

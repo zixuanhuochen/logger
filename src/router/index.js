@@ -1,13 +1,12 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '@/views/Home.vue'
-
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    redirect: {name: 'Home'}
+    redirect: { name: 'Home' }
   },
   {
     path: '/home',
@@ -22,7 +21,8 @@ const routes = [
       {
         path: 'news',
         name: 'News',
-        component: () => import('@/components/Home/News.vue')
+        component: () => import('@/components/Home/News.vue'),
+        
       },
       {
         path: 'smile',
@@ -35,17 +35,17 @@ const routes = [
         component: () => import('@/components/Home/Subscribe.vue')
       },
     ],
-    redirect:'home/homes'
+    redirect: 'home/homes'
   },
   {
-    path:'/login',
-    name:'/Login',
-    component:() => import('@/views/Login.vue')
+    path: '/login',
+    name: '/Login',
+    component: () => import('@/views/Login.vue')
   },
   {
-    path:'/lock',
-    name:'/Lock',
-    component:() => import('@/views/Lock.vue')
+    path: '/lock',
+    name: '/Lock',
+    component: () => import('@/views/Lock.vue')
   }
   // // {
   // //   path: '/about',
@@ -60,24 +60,24 @@ const routes = [
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  scrollBehavior (to, from, savedPosition) {
+  scrollBehavior(to, from, savedPosition) {
     return { y: 0 }
   },
   routes
 })
-router.beforeEach((to, from, next ) => {
-  if(from.path == '/lock' && localStorage.getItem('lock') == 'true'){
+router.beforeEach((to, from, next) => {
+  if (from.path == '/lock' && localStorage.getItem('lock') == 'true') {
     next(false)
   }
-  else if(to.path != '/login' && localStorage.getItem('lock' == 'true')){
-      next('/lock')
-    }else if(to.path == '/login' && localStorage.getItem('token')){
-      next('/home')
-    }else{
-      next()
-    }
-  
- 
+  else if (to.path != '/lock' && localStorage.getItem('lock' == 'true')) {
+    next('/lock')
+  } else if (to.path == '/login' && localStorage.getItem('token')) {
+    next('/home')
+  } else {
+    next()
+  }
+
+
 })
 
 export default router

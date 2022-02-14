@@ -6,6 +6,7 @@
         placeholder="请输入密码"
         class="psdInfo"
         v-model="lockInput"
+        @keydown.enter="unLock"
       />
       <button class="btn" @click="unLock">解</button>
     </div>
@@ -18,7 +19,7 @@ export default {
 name: 'Lock',
 data(){
   return {
-    lockInfo:'hahaha',
+    lockInfo:'haha',
     lockInput:'',
   }
 },
